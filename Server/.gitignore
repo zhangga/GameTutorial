@@ -1,0 +1,10 @@
+build/
+.gradle/
+.idea/
+.DS_Store
+venv/
+output/
+bin/
+*/logs/
+logs/
+.tmp/
