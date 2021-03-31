@@ -1,0 +1,8 @@
+serverConf:
+  port: 10000
+  bossThread: 1
+  workerThread: 2
+  idleTimeoutSec: 60
+mongoConf:
+  mongoConn: "mongodb://10.227.72.142:27017"
+  mongoDataBase: game_tutorial

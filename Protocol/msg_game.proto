@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+// 生成类的包名
+//option java_package = "com.gametutorial.gs.msg";
+package com.gametutorial.gs.msg;
+//生成的数据访问类的类名，如果没有指定此值，则生成的类名为proto文件名的驼峰命名方法
+//option java_outer_classname = "MsgGame";
+
+// 登录
+message C2S_Login {
+  int32 id = 1;
+  string name = 2;
+  string email = 3;
+}
