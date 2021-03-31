@@ -1,5 +1,5 @@
 /*
- * Copyright (c) [2021] [bytedance.inc] All rights reserved.
+ * Copyright (c) [2021] [gametutorial.inc] All rights reserved.
  */
 
 package com.gametutorial.gs.utils;
@@ -12,7 +12,7 @@ import org.slf4j.LoggerFactory;
 import java.io.File;
 
 /**
- * 配置工具类
+ * 文件工具类
  *
  * @author jossy
  * @version 1.0

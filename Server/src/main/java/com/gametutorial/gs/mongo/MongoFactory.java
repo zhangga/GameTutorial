@@ -1,5 +1,5 @@
 /*
- * Copyright (c) [2021] [bytedance.inc] All rights reserved.
+ * Copyright (c) [2021] [gametutorial.inc] All rights reserved.
  */
 
 package com.gametutorial.gs.mongo;
@@ -7,6 +7,9 @@ package com.gametutorial.gs.mongo;
 import com.gametutorial.gs.config.GameConf;
 import com.gametutorial.gs.db.PlayerDB;
 import com.mongodb.reactivestreams.client.*;
+import org.bson.types.ObjectId;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.data.mongodb.ReactiveMongoDatabaseFactory;
 import org.springframework.data.mongodb.core.ReactiveMongoTemplate;
 import org.springframework.data.mongodb.core.SimpleReactiveMongoDatabaseFactory;
@@ -18,13 +21,15 @@ import reactor.core.publisher.Mono;
 import java.util.Collections;
 
 /**
- * TODO
+ * Mongo工厂方法
  *
  * @author jossy
  * @version 1.0
  * @date 2021/3/30 16:00
  */
 public class MongoFactory {
+
+    private static final Logger log = LoggerFactory.getLogger(MongoFactory.class);
 
     private static ReactiveMongoTemplate template;
 
@@ -46,14 +51,21 @@ public class MongoFactory {
         converter.afterPropertiesSet();
 
         template = new ReactiveMongoTemplate(factory, converter);
-        PlayerDB playerDB = new PlayerDB();
-        playerDB.setLv(1);
-        playerDB.setExp(100);
-        playerDB.setName("测试");
-        playerDB.setOpenId("zzq");
-        Mono<PlayerDB> mono = template.save(playerDB);
-        mono.subscribe((data) -> {
-            System.out.println(data);
+
+        // save
+//        PlayerDB playerDB = new PlayerDB();
+//        playerDB.setLv(1);
+//        playerDB.setExp(100);
+//        playerDB.setName("测试");
+//        playerDB.setOpenId("zzq");
+//        Mono<PlayerDB> mono = template.save(playerDB);
+//        mono.subscribe((data) -> {
+//            log.info("data={}", data);
+//        });
+        // find
+        Mono<PlayerDB> find = template.findById(new ObjectId("6063d9b9e1280b7b9c6c2705"), PlayerDB.class);
+        find.subscribe((data) -> {
+            log.info("data={}", data);
         });
     }
 

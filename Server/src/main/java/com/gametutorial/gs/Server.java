@@ -1,5 +1,5 @@
 /*
- * Copyright (c) [2021] [bytedance.inc] All rights reserved.
+ * Copyright (c) [2021] [gametutorial.inc] All rights reserved.
  */
 
 package com.gametutorial.gs;
