@@ -2,7 +2,7 @@
 <configuration status="info">
     <Properties>
         <Property name="LOG_PATH">./logs</Property>
-        <Property name="LOG_FILE">server</Property>
+        <Property name="LOG_FILE">app</Property>
         <Property name="LOG_PATTERN">%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%t] %c (%F:%L) %msg%n</Property>
     </Properties>
 
@@ -13,10 +13,10 @@
         </Console>
 
         <RollingFile name="RollingFile" fileName="${LOG_PATH}/${LOG_FILE}.log"
-                    filePattern="${LOG_PATH}$${date:yyyy-MM}/app-%d{yyyyMMddHHmmssSSS}.log.gz" append="true">
+                    filePattern="${LOG_PATH}/${LOG_PATH}$${date:yyyy-MM}/app-%d{yyyyMMddHHmmssSSS}.log.gz" append="true">
             <PatternLayout pattern="${LOG_PATTERN}" charset="UTF-8"/>
             <Policies>
-                <SizeBasedTriggeringPolicy size="20MB"/>
+                <SizeBasedTriggeringPolicy size="1MB"/>
             </Policies>
             <DefaultRolloverStrategy max="30">
                 <Delete basePath="${LOG_PATH}/" maxDepth="2">

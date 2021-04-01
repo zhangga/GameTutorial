@@ -4,5 +4,8 @@ serverConf:
   workerThread: 2
   idleTimeoutSec: 60
 mongoConf:
-  mongoConn: "mongodb://10.227.72.142:27017"
+  mongoConn: "mongodb://127.0.0.1:27017"
   mongoDataBase: game_tutorial
+threadPool:
+  logic: 4
+  db: 4

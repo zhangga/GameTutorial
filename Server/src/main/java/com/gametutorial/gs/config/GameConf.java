@@ -6,6 +6,8 @@ package com.gametutorial.gs.config;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.util.Map;
+
 /**
  * 游戏服务器配置
  *
@@ -21,6 +23,9 @@ public class GameConf {
     @JsonProperty("mongoConf")
     private MongoConf mongoConf;
 
+    @JsonProperty("threadPool")
+    private Map<String, Integer> threadPool;
+
     public ServerConf getServerConf() {
         return serverConf;
     }
@@ -35,5 +40,13 @@ public class GameConf {
 
     public void setMongoConf(MongoConf mongoConf) {
         this.mongoConf = mongoConf;
+    }
+
+    public Map<String, Integer> getThreadPool() {
+        return threadPool;
+    }
+
+    public void setThreadPool(Map<String, Integer> threadPool) {
+        this.threadPool = threadPool;
     }
 }
