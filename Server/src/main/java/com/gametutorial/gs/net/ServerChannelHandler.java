@@ -8,7 +8,7 @@ import com.gametutorial.gs.Server;
 import com.gametutorial.gs.core.Connection;
 import com.gametutorial.gs.core.GameServiceFactory;
 import com.gametutorial.gs.core.GameThread;
-import com.gametutorial.gs.service.PlayerService;
+import io.netty.buffer.ByteBuf;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
@@ -17,7 +17,6 @@ import org.slf4j.LoggerFactory;
 
 import java.net.InetSocketAddress;
 import java.util.concurrent.atomic.AtomicInteger;
-import java.util.function.Consumer;
 
 /**
  * ChannelHandler
@@ -37,12 +36,12 @@ public class ServerChannelHandler extends ChannelInboundHandlerAdapter {
 
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
-        super.channelActive(ctx);
         Channel channel = ctx.channel();
         // 分配一个随机线程
         int connId = idAuto.incrementAndGet();
         GameThread thread = Server.getThread(GameServiceFactory.getGService(Connection.class).threadName(), connId);
         conn = new Connection(thread, connId, channel);
+        conn.startup();
 
         // 日志
         InetSocketAddress addrLocal = (InetSocketAddress) channel.localAddress();
@@ -56,19 +55,35 @@ public class ServerChannelHandler extends ChannelInboundHandlerAdapter {
 
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
-        super.channelRead(ctx, msg);
-
-        PlayerService player = GameServiceFactory.createProxy(PlayerService.class, 1);
-        player.login().subscribe(new Consumer<Long>() {
-            @Override
-            public void accept(Long aLong) {
-
-            }
-        });
+        ByteBuf buf = (ByteBuf) msg;
+        buf.markReaderIndex();
+        // cmd
+        buf.readShort();
+        int length = buf.readInt();
+        if (buf.readableBytes() < length) {
+            buf.resetReaderIndex();
+            return;
+        }
+        buf.resetReaderIndex();
+        conn.onMsgInput(buf);
     }
 
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
-        super.exceptionCaught(ctx, cause);
+        // 断连的日志就不打印堆栈了
+        if (cause.getMessage().contains("Connection reset by peer") ||
+                cause.getMessage().startsWith("远程主机强迫关闭了一个现有的连接") ||
+                cause.getMessage().startsWith("杩滅▼涓绘満寮鸿揩鍏抽棴")) {
+            log.debug("{}", cause);
+        } else {
+            InetSocketAddress socket = (InetSocketAddress) ctx.channel().remoteAddress();
+            String clientIP = socket.getAddress().getHostAddress();
+            if (clientIP != null) {
+                log.error("非法的请求：ip={}, port={}", clientIP, socket.getPort());
+            }
+            //输出错误日志
+            log.error("发生异常：connId={}, cause={}", conn.getId(), cause);
+            cause.printStackTrace();
+        }
     }
 }

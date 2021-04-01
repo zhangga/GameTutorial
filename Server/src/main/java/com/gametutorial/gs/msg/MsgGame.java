@@ -7,6 +7,7 @@ public final class MsgGame {
   private MsgGame() {}
   public static void registerAllExtensions(
       com.google.protobuf.ExtensionRegistryLite registry) {
+    registry.add(com.gametutorial.gs.msg.MsgGame.cmd);
   }
 
   public static void registerAllExtensions(
@@ -14,35 +15,455 @@ public final class MsgGame {
     registerAllExtensions(
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
+  public interface C2S_PingOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:com.gametutorial.gs.msg.C2S_Ping)
+      com.google.protobuf.MessageOrBuilder {
+  }
+  /**
+   * <pre>
+   * 心跳
+   * </pre>
+   *
+   * Protobuf type {@code com.gametutorial.gs.msg.C2S_Ping}
+   */
+  public static final class C2S_Ping extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:com.gametutorial.gs.msg.C2S_Ping)
+      C2S_PingOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use C2S_Ping.newBuilder() to construct.
+    private C2S_Ping(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private C2S_Ping() {
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new C2S_Ping();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private C2S_Ping(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.gametutorial.gs.msg.MsgGame.internal_static_com_gametutorial_gs_msg_C2S_Ping_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.gametutorial.gs.msg.MsgGame.internal_static_com_gametutorial_gs_msg_C2S_Ping_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.gametutorial.gs.msg.MsgGame.C2S_Ping.class, com.gametutorial.gs.msg.MsgGame.C2S_Ping.Builder.class);
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.gametutorial.gs.msg.MsgGame.C2S_Ping)) {
+        return super.equals(obj);
+      }
+      com.gametutorial.gs.msg.MsgGame.C2S_Ping other = (com.gametutorial.gs.msg.MsgGame.C2S_Ping) obj;
+
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.gametutorial.gs.msg.MsgGame.C2S_Ping parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.gametutorial.gs.msg.MsgGame.C2S_Ping parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.gametutorial.gs.msg.MsgGame.C2S_Ping parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.gametutorial.gs.msg.MsgGame.C2S_Ping parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.gametutorial.gs.msg.MsgGame.C2S_Ping parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.gametutorial.gs.msg.MsgGame.C2S_Ping parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.gametutorial.gs.msg.MsgGame.C2S_Ping parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.gametutorial.gs.msg.MsgGame.C2S_Ping parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.gametutorial.gs.msg.MsgGame.C2S_Ping parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static com.gametutorial.gs.msg.MsgGame.C2S_Ping parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.gametutorial.gs.msg.MsgGame.C2S_Ping parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.gametutorial.gs.msg.MsgGame.C2S_Ping parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.gametutorial.gs.msg.MsgGame.C2S_Ping prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * 心跳
+     * </pre>
+     *
+     * Protobuf type {@code com.gametutorial.gs.msg.C2S_Ping}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:com.gametutorial.gs.msg.C2S_Ping)
+        com.gametutorial.gs.msg.MsgGame.C2S_PingOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.gametutorial.gs.msg.MsgGame.internal_static_com_gametutorial_gs_msg_C2S_Ping_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.gametutorial.gs.msg.MsgGame.internal_static_com_gametutorial_gs_msg_C2S_Ping_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.gametutorial.gs.msg.MsgGame.C2S_Ping.class, com.gametutorial.gs.msg.MsgGame.C2S_Ping.Builder.class);
+      }
+
+      // Construct using com.gametutorial.gs.msg.MsgGame.C2S_Ping.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.gametutorial.gs.msg.MsgGame.internal_static_com_gametutorial_gs_msg_C2S_Ping_descriptor;
+      }
+
+      @java.lang.Override
+      public com.gametutorial.gs.msg.MsgGame.C2S_Ping getDefaultInstanceForType() {
+        return com.gametutorial.gs.msg.MsgGame.C2S_Ping.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public com.gametutorial.gs.msg.MsgGame.C2S_Ping build() {
+        com.gametutorial.gs.msg.MsgGame.C2S_Ping result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public com.gametutorial.gs.msg.MsgGame.C2S_Ping buildPartial() {
+        com.gametutorial.gs.msg.MsgGame.C2S_Ping result = new com.gametutorial.gs.msg.MsgGame.C2S_Ping(this);
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.gametutorial.gs.msg.MsgGame.C2S_Ping) {
+          return mergeFrom((com.gametutorial.gs.msg.MsgGame.C2S_Ping)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.gametutorial.gs.msg.MsgGame.C2S_Ping other) {
+        if (other == com.gametutorial.gs.msg.MsgGame.C2S_Ping.getDefaultInstance()) return this;
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.gametutorial.gs.msg.MsgGame.C2S_Ping parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.gametutorial.gs.msg.MsgGame.C2S_Ping) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:com.gametutorial.gs.msg.C2S_Ping)
+    }
+
+    // @@protoc_insertion_point(class_scope:com.gametutorial.gs.msg.C2S_Ping)
+    private static final com.gametutorial.gs.msg.MsgGame.C2S_Ping DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.gametutorial.gs.msg.MsgGame.C2S_Ping();
+    }
+
+    public static com.gametutorial.gs.msg.MsgGame.C2S_Ping getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<C2S_Ping>
+        PARSER = new com.google.protobuf.AbstractParser<C2S_Ping>() {
+      @java.lang.Override
+      public C2S_Ping parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new C2S_Ping(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<C2S_Ping> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<C2S_Ping> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.gametutorial.gs.msg.MsgGame.C2S_Ping getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   public interface C2S_LoginOrBuilder extends
       // @@protoc_insertion_point(interface_extends:com.gametutorial.gs.msg.C2S_Login)
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>int32 id = 1;</code>
-     * @return The id.
-     */
-    int getId();
-
-    /**
-     * <code>string name = 2;</code>
+     * <code>string name = 1;</code>
      * @return The name.
      */
     java.lang.String getName();
     /**
-     * <code>string name = 2;</code>
+     * <code>string name = 1;</code>
      * @return The bytes for name.
      */
     com.google.protobuf.ByteString
         getNameBytes();
 
     /**
-     * <code>string email = 3;</code>
+     * <code>string email = 2;</code>
      * @return The email.
      */
     java.lang.String getEmail();
     /**
-     * <code>string email = 3;</code>
+     * <code>string email = 2;</code>
      * @return The bytes for email.
      */
     com.google.protobuf.ByteString
@@ -99,18 +520,13 @@ public final class MsgGame {
             case 0:
               done = true;
               break;
-            case 8: {
-
-              id_ = input.readInt32();
-              break;
-            }
-            case 18: {
+            case 10: {
               java.lang.String s = input.readStringRequireUtf8();
 
               name_ = s;
               break;
             }
-            case 26: {
+            case 18: {
               java.lang.String s = input.readStringRequireUtf8();
 
               email_ = s;
@@ -148,21 +564,10 @@ public final class MsgGame {
               com.gametutorial.gs.msg.MsgGame.C2S_Login.class, com.gametutorial.gs.msg.MsgGame.C2S_Login.Builder.class);
     }
 
-    public static final int ID_FIELD_NUMBER = 1;
-    private int id_;
-    /**
-     * <code>int32 id = 1;</code>
-     * @return The id.
-     */
-    @java.lang.Override
-    public int getId() {
-      return id_;
-    }
-
-    public static final int NAME_FIELD_NUMBER = 2;
+    public static final int NAME_FIELD_NUMBER = 1;
     private volatile java.lang.Object name_;
     /**
-     * <code>string name = 2;</code>
+     * <code>string name = 1;</code>
      * @return The name.
      */
     @java.lang.Override
@@ -179,7 +584,7 @@ public final class MsgGame {
       }
     }
     /**
-     * <code>string name = 2;</code>
+     * <code>string name = 1;</code>
      * @return The bytes for name.
      */
     @java.lang.Override
@@ -197,10 +602,10 @@ public final class MsgGame {
       }
     }
 
-    public static final int EMAIL_FIELD_NUMBER = 3;
+    public static final int EMAIL_FIELD_NUMBER = 2;
     private volatile java.lang.Object email_;
     /**
-     * <code>string email = 3;</code>
+     * <code>string email = 2;</code>
      * @return The email.
      */
     @java.lang.Override
@@ -217,7 +622,7 @@ public final class MsgGame {
       }
     }
     /**
-     * <code>string email = 3;</code>
+     * <code>string email = 2;</code>
      * @return The bytes for email.
      */
     @java.lang.Override
@@ -249,14 +654,11 @@ public final class MsgGame {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (id_ != 0) {
-        output.writeInt32(1, id_);
-      }
       if (!getNameBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, name_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, name_);
       }
       if (!getEmailBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, email_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, email_);
       }
       unknownFields.writeTo(output);
     }
@@ -267,15 +669,11 @@ public final class MsgGame {
       if (size != -1) return size;
 
       size = 0;
-      if (id_ != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, id_);
-      }
       if (!getNameBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, name_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, name_);
       }
       if (!getEmailBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, email_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, email_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -292,8 +690,6 @@ public final class MsgGame {
       }
       com.gametutorial.gs.msg.MsgGame.C2S_Login other = (com.gametutorial.gs.msg.MsgGame.C2S_Login) obj;
 
-      if (getId()
-          != other.getId()) return false;
       if (!getName()
           .equals(other.getName())) return false;
       if (!getEmail()
@@ -309,8 +705,6 @@ public final class MsgGame {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + ID_FIELD_NUMBER;
-      hash = (53 * hash) + getId();
       hash = (37 * hash) + NAME_FIELD_NUMBER;
       hash = (53 * hash) + getName().hashCode();
       hash = (37 * hash) + EMAIL_FIELD_NUMBER;
@@ -452,8 +846,6 @@ public final class MsgGame {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        id_ = 0;
-
         name_ = "";
 
         email_ = "";
@@ -484,7 +876,6 @@ public final class MsgGame {
       @java.lang.Override
       public com.gametutorial.gs.msg.MsgGame.C2S_Login buildPartial() {
         com.gametutorial.gs.msg.MsgGame.C2S_Login result = new com.gametutorial.gs.msg.MsgGame.C2S_Login(this);
-        result.id_ = id_;
         result.name_ = name_;
         result.email_ = email_;
         onBuilt();
@@ -535,9 +926,6 @@ public final class MsgGame {
 
       public Builder mergeFrom(com.gametutorial.gs.msg.MsgGame.C2S_Login other) {
         if (other == com.gametutorial.gs.msg.MsgGame.C2S_Login.getDefaultInstance()) return this;
-        if (other.getId() != 0) {
-          setId(other.getId());
-        }
         if (!other.getName().isEmpty()) {
           name_ = other.name_;
           onChanged();
@@ -575,40 +963,9 @@ public final class MsgGame {
         return this;
       }
 
-      private int id_ ;
-      /**
-       * <code>int32 id = 1;</code>
-       * @return The id.
-       */
-      @java.lang.Override
-      public int getId() {
-        return id_;
-      }
-      /**
-       * <code>int32 id = 1;</code>
-       * @param value The id to set.
-       * @return This builder for chaining.
-       */
-      public Builder setId(int value) {
-        
-        id_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>int32 id = 1;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearId() {
-        
-        id_ = 0;
-        onChanged();
-        return this;
-      }
-
       private java.lang.Object name_ = "";
       /**
-       * <code>string name = 2;</code>
+       * <code>string name = 1;</code>
        * @return The name.
        */
       public java.lang.String getName() {
@@ -624,7 +981,7 @@ public final class MsgGame {
         }
       }
       /**
-       * <code>string name = 2;</code>
+       * <code>string name = 1;</code>
        * @return The bytes for name.
        */
       public com.google.protobuf.ByteString
@@ -641,7 +998,7 @@ public final class MsgGame {
         }
       }
       /**
-       * <code>string name = 2;</code>
+       * <code>string name = 1;</code>
        * @param value The name to set.
        * @return This builder for chaining.
        */
@@ -656,7 +1013,7 @@ public final class MsgGame {
         return this;
       }
       /**
-       * <code>string name = 2;</code>
+       * <code>string name = 1;</code>
        * @return This builder for chaining.
        */
       public Builder clearName() {
@@ -666,7 +1023,7 @@ public final class MsgGame {
         return this;
       }
       /**
-       * <code>string name = 2;</code>
+       * <code>string name = 1;</code>
        * @param value The bytes for name to set.
        * @return This builder for chaining.
        */
@@ -684,7 +1041,7 @@ public final class MsgGame {
 
       private java.lang.Object email_ = "";
       /**
-       * <code>string email = 3;</code>
+       * <code>string email = 2;</code>
        * @return The email.
        */
       public java.lang.String getEmail() {
@@ -700,7 +1057,7 @@ public final class MsgGame {
         }
       }
       /**
-       * <code>string email = 3;</code>
+       * <code>string email = 2;</code>
        * @return The bytes for email.
        */
       public com.google.protobuf.ByteString
@@ -717,7 +1074,7 @@ public final class MsgGame {
         }
       }
       /**
-       * <code>string email = 3;</code>
+       * <code>string email = 2;</code>
        * @param value The email to set.
        * @return This builder for chaining.
        */
@@ -732,7 +1089,7 @@ public final class MsgGame {
         return this;
       }
       /**
-       * <code>string email = 3;</code>
+       * <code>string email = 2;</code>
        * @return This builder for chaining.
        */
       public Builder clearEmail() {
@@ -742,7 +1099,7 @@ public final class MsgGame {
         return this;
       }
       /**
-       * <code>string email = 3;</code>
+       * <code>string email = 2;</code>
        * @param value The bytes for email to set.
        * @return This builder for chaining.
        */
@@ -810,6 +1167,22 @@ public final class MsgGame {
 
   }
 
+  public static final int CMD_FIELD_NUMBER = 50002;
+  /**
+   * <code>extend .google.protobuf.MessageOptions { ... }</code>
+   */
+  public static final
+    com.google.protobuf.GeneratedMessage.GeneratedExtension<
+      com.google.protobuf.DescriptorProtos.MessageOptions,
+      java.lang.Integer> cmd = com.google.protobuf.GeneratedMessage
+          .newFileScopedGeneratedExtension(
+        java.lang.Integer.class,
+        null);
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_gametutorial_gs_msg_C2S_Ping_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_com_gametutorial_gs_msg_C2S_Ping_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_com_gametutorial_gs_msg_C2S_Login_descriptor;
   private static final 
@@ -825,19 +1198,35 @@ public final class MsgGame {
   static {
     java.lang.String[] descriptorData = {
       "\n\016msg_game.proto\022\027com.gametutorial.gs.ms" +
-      "g\"4\n\tC2S_Login\022\n\n\002id\030\001 \001(\005\022\014\n\004name\030\002 \001(\t" +
-      "\022\r\n\005email\030\003 \001(\tb\006proto3"
+      "g\032 google/protobuf/descriptor.proto\"\020\n\010C" +
+      "2S_Ping:\004\220\265\030\001\".\n\tC2S_Login\022\014\n\004name\030\001 \001(\t" +
+      "\022\r\n\005email\030\002 \001(\t:\004\220\265\030d:.\n\003cmd\022\037.google.pr" +
+      "otobuf.MessageOptions\030\322\206\003 \001(\005b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
+          com.google.protobuf.DescriptorProtos.getDescriptor(),
         });
-    internal_static_com_gametutorial_gs_msg_C2S_Login_descriptor =
+    internal_static_com_gametutorial_gs_msg_C2S_Ping_descriptor =
       getDescriptor().getMessageTypes().get(0);
+    internal_static_com_gametutorial_gs_msg_C2S_Ping_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_com_gametutorial_gs_msg_C2S_Ping_descriptor,
+        new java.lang.String[] { });
+    internal_static_com_gametutorial_gs_msg_C2S_Login_descriptor =
+      getDescriptor().getMessageTypes().get(1);
     internal_static_com_gametutorial_gs_msg_C2S_Login_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_gametutorial_gs_msg_C2S_Login_descriptor,
-        new java.lang.String[] { "Id", "Name", "Email", });
+        new java.lang.String[] { "Name", "Email", });
+    cmd.internalInit(descriptor.getExtensions().get(0));
+    com.google.protobuf.ExtensionRegistry registry =
+        com.google.protobuf.ExtensionRegistry.newInstance();
+    registry.add(com.gametutorial.gs.msg.MsgGame.cmd);
+    com.google.protobuf.Descriptors.FileDescriptor
+        .internalUpdateFileDescriptor(descriptor, registry);
+    com.google.protobuf.DescriptorProtos.getDescriptor();
   }
 
   // @@protoc_insertion_point(outer_class_scope)

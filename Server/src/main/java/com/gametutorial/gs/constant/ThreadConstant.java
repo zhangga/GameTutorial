@@ -22,6 +22,8 @@ public class ThreadConstant {
 
     private static final Logger log = LoggerFactory.getLogger(ThreadConstant.class);
 
+    public static final String CONNECT = "connect";
+
     public static final String LOGIC = "logic";
 
     public static final String DB = "db";

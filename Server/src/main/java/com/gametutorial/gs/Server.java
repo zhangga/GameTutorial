@@ -51,7 +51,6 @@ public class Server {
         // shutdown hook
         Runtime.getRuntime().addShutdownHook(new Thread(Server::shutdown));
         Server.beforeStartup();
-        test();
 
         // start tcp server
         TcpServer tcpServer = new TcpServer(config);
@@ -61,6 +60,8 @@ public class Server {
 
     private static void beforeStartup() throws Exception {
         ThreadConstant.checkValid();
+
+        MsgHandlerFactory.init(Server.class);
 
         // init mongo
         MongoFactory.init(config);
@@ -102,7 +103,7 @@ public class Server {
                     GameThread thread = getThread(service.threadName(), i+start);
                     GameService serv = GameServiceFactory.newInstance(clazz, thread, i);
                     serv.startup();
-                    log.info("game service={} startup", serv.getId());
+                    log.info("GameService startup, {}", serv);
                 }
             }
         }

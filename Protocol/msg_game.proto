@@ -6,9 +6,20 @@ package com.gametutorial.gs.msg;
 //生成的数据访问类的类名，如果没有指定此值，则生成的类名为proto文件名的驼峰命名方法
 //option java_outer_classname = "MsgGame";
 
+import "google/protobuf/descriptor.proto";
+
+extend google.protobuf.MessageOptions {
+    int32 cmd = 50002;
+}
+
+// 心跳
+message C2S_Ping {
+	option (cmd) = 1;
+}
+
 // 登录
 message C2S_Login {
-  int32 id = 1;
-  string name = 2;
-  string email = 3;
+	option (cmd) = 100;
+	string name = 1;
+	string email = 2;
 }

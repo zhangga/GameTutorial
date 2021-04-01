@@ -4,7 +4,6 @@
 
 package com.gametutorial.gs.core;
 
-import com.gametutorial.gs.service.PlayerService;
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.BiMap;
 import com.google.common.collect.HashBiMap;
@@ -16,7 +15,6 @@ import org.springframework.cglib.proxy.Enhancer;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 import java.util.*;
-import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.AtomicInteger;

@@ -5,10 +5,8 @@
 package com.gametutorial.gs.service;
 
 import com.gametutorial.gs.constant.ThreadConstant;
-import com.gametutorial.gs.core.FlowResult;
-import com.gametutorial.gs.core.GMethod;
-import com.gametutorial.gs.core.GameService;
-import com.gametutorial.gs.core.GService;
+import com.gametutorial.gs.core.*;
+import io.netty.buffer.ByteBuf;
 
 /**
  * 账号服务
@@ -19,6 +17,14 @@ import com.gametutorial.gs.core.GService;
  */
 @GService(threadName = ThreadConstant.LOGIC, daemon = true, daemonNum = 2)
 public class AccountService extends GameService {
+
+    private static final MsgHandlerFactory msgHandler = new MsgHandlerFactory();
+
+    @GMethod
+    public FlowResult<Void> msgHandler(ByteBuf msg) {
+        MsgHandlerFactory.decode(msg);
+        return null;
+    }
 
     @GMethod
     public FlowResult<String> getString(String value) {

@@ -102,6 +102,10 @@ public class GameThread implements IThreadCase {
         pulseCallAffirm();
         // 执行Call请求
         pulseCalls();
+        // 处理返回值
+        pulseCallResults();
+        // 驱动服务心跳
+        pulseServices();
     }
 
     /**
@@ -132,6 +136,29 @@ public class GameThread implements IThreadCase {
     }
 
     /**
+     * 心跳中处理请求返回值
+     */
+    private void pulseCallResults() {
+        while (!pulseCallResults.isEmpty()) {
+            Call call = pulseCallResults.pop();
+            FlowResult.Listener listener = call.callback.getListener();
+            if (listener == null)
+                continue;
+            try {
+                if (call.callback.getThrowable() != null) {
+                    listener.onError(call.callback.getThrowable());
+                }
+                else {
+                    listener.onResult(call.callback.getResult());
+                }
+            } catch (Exception e) {
+                log.error("pulseCallResults call={}, error={}", call, e);
+                e.printStackTrace();
+            }
+        }
+    }
+
+    /**
      * 执行call请求
      * @param call
      */
@@ -147,7 +174,8 @@ public class GameThread implements IThreadCase {
         Method method = GameServiceFactory.getGMethod(call.methodId);
         try {
             FlowResult flow = (FlowResult) method.invoke(service, call.args);
-            call.callback.setResult(flow.getResult());
+            Object ret = flow == null ? null : flow.getResult();
+            call.callback.setResult(ret);
         } catch (Exception e) {
             log.error("dispatchCall call={}, error={}", call, e);
             e.printStackTrace();
@@ -165,6 +193,17 @@ public class GameThread implements IThreadCase {
         // 非游戏线程发起的调用
         else {
             GameServiceFactory.execute(call);
+        }
+    }
+
+    private void pulseServices() {
+        for (GameService service : services.values()) {
+            try {
+                service.pulse();
+            } catch (Exception e) {
+                log.error("pulseService={}, error={}", service.getId(), e);
+                e.printStackTrace();
+            }
         }
     }
 

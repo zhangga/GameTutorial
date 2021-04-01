@@ -32,6 +32,12 @@ public class TcpServer {
 
     private static final Logger log = LoggerFactory.getLogger(TcpServer.class);
 
+    public static final int DATA_MAX_FRAME_LEN = 128 * 1024;
+    public static final int DATA_FIELD_OFFSET_LEN = 2;
+    public static final int DATA_FIELD_LEN_LEN = 4;
+    public static final int DATA_ADJUSTMENT_LEN = 0;
+    public static final int DATA_INITIAL_BYTES_TO_STRIP = 0;
+
     private EventLoopGroup boss;
     private EventLoopGroup worker;
     private ChannelFuture channel;
@@ -66,8 +72,8 @@ public class TcpServer {
                     channel.pipeline().addLast(
                             new IdleStateHandler(0, 0,
                                     gameConf.getServerConf().getIdleTimeoutSec()),
-                            new LengthFieldBasedFrameDecoder(512*1024, 5, 4,
-                                    0, 0, true),
+                            new LengthFieldBasedFrameDecoder(DATA_MAX_FRAME_LEN, DATA_FIELD_OFFSET_LEN, DATA_FIELD_LEN_LEN,
+                                    DATA_ADJUSTMENT_LEN, DATA_INITIAL_BYTES_TO_STRIP, true),
                             new ServerChannelHandler()
                     );
                 }

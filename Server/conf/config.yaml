@@ -7,5 +7,6 @@ mongoConf:
   mongoConn: "mongodb://127.0.0.1:27017"
   mongoDataBase: game_tutorial
 threadPool:
+  connect: 2
   logic: 4
   db: 4

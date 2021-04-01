@@ -54,11 +54,43 @@ public abstract class GameService {
     }
 
     /**
+     * 心跳
+     */
+    public void pulse() {
+        pulseSchedulers();
+        pulseOverride();
+    }
+
+    /**
+     * 子类可覆盖心跳
+     */
+    public void pulseOverride() {
+
+    }
+
+    /**
      * 获取服务的id
      * @return
      */
     public Object getId() {
         return id;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class=").append(this.getClass().getSimpleName()).append(", id=").append(id);
+        return sb.toString();
+    }
+
+    //----------------------------------------------------------------------------
+    // 调度相关
+
+    /**
+     * 执行时间调度队列
+     */
+    private void pulseSchedulers() {
+
     }
 
 

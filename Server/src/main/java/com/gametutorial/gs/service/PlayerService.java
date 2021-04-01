@@ -5,9 +5,8 @@
 package com.gametutorial.gs.service;
 
 import com.gametutorial.gs.constant.ThreadConstant;
-import com.gametutorial.gs.core.GService;
-import com.gametutorial.gs.core.GameService;
-import reactor.core.publisher.Mono;
+import com.gametutorial.gs.core.*;
+import io.netty.buffer.ByteBuf;
 
 /**
  * 玩家服务
@@ -19,12 +18,9 @@ import reactor.core.publisher.Mono;
 @GService(threadName = ThreadConstant.LOGIC)
 public class PlayerService extends GameService {
 
-    @Override
-    public String getId() {
-        return null;
-    }
-
-    public Mono<Long> login() {
+    @GMethod
+    public FlowResult<Void> msgHandler(ByteBuf msg) {
+        MsgHandlerFactory.decode(msg);
         return null;
     }
 
